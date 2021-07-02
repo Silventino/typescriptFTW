@@ -6,7 +6,7 @@ import "reflect-metadata";
 import { createConnection } from "typeorm";
 // import 'reflect-metadata'; // We need this in order to use @Decorators
 // import "reflect-metadata";
-import config from "./config/index";
+import env from "./loaders/env";
 import expressLoader from "./loaders/express";
 import UserModel from "./models/UserModel";
 
@@ -21,27 +21,27 @@ const main = async () => {
     // load app
     const app = expressLoader();
 
-    if (config.MODE === "development") {
+    if (env.MODE === "development") {
       const httpServer = http.createServer(app);
-      httpServer.listen(config.PORT);
+      httpServer.listen(env.PORT);
     } else {
       const privateKey = fs.readFileSync(
-        path.resolve(config.SSL_PATH, "privkey.pem"),
+        path.resolve(env.SSL_PATH, "privkey.pem"),
         "utf8"
       );
       const certificate = fs.readFileSync(
-        path.resolve(config.SSL_PATH, "fullchain.pem"),
+        path.resolve(env.SSL_PATH, "fullchain.pem"),
         "utf8"
       );
       const credentials = { key: privateKey, cert: certificate };
 
       const httpsServer = https.createServer(credentials, app);
-      httpsServer.listen(config.PORT);
+      httpsServer.listen(env.PORT);
     }
 
     console.log(`
       ################################################
-      #        Server listening on port: ${config.PORT}      #
+      #        Server listening on port: ${env.PORT}      #
       ################################################
     `);
   } catch (error) {
