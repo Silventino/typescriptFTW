@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "start cmd.exe @cmd /k \"cd shared && yarn start\" && start cmd.exe @cmd /k \"cd backend && yarn start\" && start cmd.exe @cmd /k \"cd frontend && yarn start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
