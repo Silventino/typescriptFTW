@@ -13,7 +13,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "typeorm": "^0.2.34",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "git+https://github.com/Silventino/typeorm-shim.git",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },

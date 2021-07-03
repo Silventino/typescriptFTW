@@ -1,8 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "reflect-metadata";
+
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { User } from "./shared/entity/User";
 
 function App() {
+  const user = new User();
+
   return (
     <div className="App">
       <header className="App-header">
